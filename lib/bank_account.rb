@@ -12,5 +12,6 @@ class BankAccount
 
   def deposit(amount)
     self.balance += amount
+    @transactions.push(Deposit.new(amount))
   end
 end

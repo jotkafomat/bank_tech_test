@@ -24,5 +24,9 @@ describe BankAccount do
 
       expect { @my_new_account.deposit(100) }.to change { @my_new_account.balance }.by(100)
     end
+    it 'adds funds to account balance' do
+
+      expect { @my_new_account.deposit(100) }.to change { @my_new_account.transactions.length }.by(1)
+    end
   end
 end
