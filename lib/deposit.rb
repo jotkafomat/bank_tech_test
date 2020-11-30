@@ -4,6 +4,6 @@ class Deposit
 
   def initialize(amount)
     @amount = amount
-    @date = Date.new
+    @date = Time.now
   end
 end

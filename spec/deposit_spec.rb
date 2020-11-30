@@ -14,8 +14,7 @@ describe Deposit do
     end
     it 'creates new instance of deposit with current date' do
 
-      date = Date.new
-      expect(@new_deposit.date).to eq date
+      expect(@new_deposit.date).to be_a(Time)
     end
   end
 end
