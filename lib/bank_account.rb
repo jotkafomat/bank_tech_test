@@ -7,7 +7,7 @@ class BankAccount
     @transactions = []
   end
 
-  def deposit(amount)
+  def add_deposit(amount)
     @transactions.push(Deposit.new(amount))
   end
 

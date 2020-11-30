@@ -6,6 +6,8 @@ describe BankAccount do
     @my_new_account = BankAccount.new
   end
 
+  let(:deposit) { double :deposit }
+
   describe '#initialize' do
 
     it 'initializes with balance equal 0' do
@@ -19,15 +21,15 @@ describe BankAccount do
     end
   end
 
-  describe '#deposit' do
+  describe '#add_deposit' do
     it 'adds funds to account balance' do
 
-      expect { @my_new_account.deposit(100) }.to change { @my_new_account.balance() }.by(100)
+      expect { @my_new_account.add_deposit(100) }.to change { @my_new_account.balance() }.by(100)
     end
 
     it 'adds deposit transaction to the transactions array' do
 
-      expect { @my_new_account.deposit(100) }.to change { @my_new_account.transactions.length }.by(1)
+      expect { @my_new_account.add_deposit(100) }.to change { @my_new_account.transactions.length }.by(1)
     end
   end
 end
