@@ -17,7 +17,7 @@ class BankAccount
 
   def make_withdrawal(amount)
     new_withdrawal = Withdrawal.new(amount * -1)
-    new_withdrawal.account_balance += balance()
+    new_withdrawal.account_balance -= balance()
     @transactions.push(new_withdrawal)
   end
 
