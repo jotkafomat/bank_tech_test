@@ -27,6 +27,9 @@ class BankAccount
       .sum
   end
 
-  
+  def print_statement
+    "date || credit || debit || balance" + "\n" +
+    transactions.map { |transaction| transaction.string_coverter }.join("\n")
+  end
 
 end
