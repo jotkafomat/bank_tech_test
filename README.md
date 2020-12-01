@@ -24,13 +24,13 @@ As a Bank Customer
 to check transaction on my Account
 I would like to print a bank statement
 
-#5
+#6
 As a Bank Customer
 to recognise transaction on the statement
 I would like to see date and type of transaction on the statement
 (date || credit || debit || balance)
 
-#6
+#7
 As a Bank Customer
 to see a history of my transaction
 I would like to see them in chronological order on the statement

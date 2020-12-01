@@ -10,11 +10,15 @@ class BankAccount
   end
 
   def add_deposit(amount)
-    @transactions.push(Deposit.new(amount))
+    new_deposit = Deposit.new(amount)
+    new_deposit.account_balance += balance()
+    @transactions.push(new_deposit)
   end
 
   def make_withdrawal(amount)
-    @transactions.push(Withdrawal.new(amount * -1))
+    new_withdrawal = Withdrawal.new(amount * -1)
+    new_withdrawal.account_balance += balance()
+    @transactions.push(new_withdrawal)
   end
 
   def balance
@@ -22,4 +26,7 @@ class BankAccount
       .map { |transaction| transaction.amount }
       .sum
   end
+
+  
+
 end
