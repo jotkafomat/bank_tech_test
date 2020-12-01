@@ -46,7 +46,7 @@ describe BankAccount do
     end
   end
 
-  describe '#print_statement' do
+  describe '#print_statement_body' do
 
     it 'prints head of the statement and one deposit transaction' do
       @my_new_account.add_deposit(100)
@@ -54,7 +54,7 @@ describe BankAccount do
       amount = '%.2f' % @my_new_account.transactions[0].amount
       balance = '%.2f' % @my_new_account.transactions[0].account_balance
 
-      expect(@my_new_account.print_statement()).to eq "date || credit || debit || balance\n#{date} || #{amount} || || #{balance}"
+      expect(@my_new_account.print_statement_body()).to eq "#{date} || #{amount} || || #{balance}"
     end
 
     it 'prints head of the statement and one deposit transaction' do
@@ -63,7 +63,7 @@ describe BankAccount do
       amount = '%.2f' % (@my_new_account.transactions[0].amount * -1)
       balance = '%.2f' % @my_new_account.transactions[0].account_balance
 
-      expect(@my_new_account.print_statement()).to eq "date || credit || debit || balance\n#{date} || || #{amount} || #{balance}"
+      expect(@my_new_account.print_statement_body()).to eq "#{date} || || #{amount} || #{balance}"
     end
 
   end
