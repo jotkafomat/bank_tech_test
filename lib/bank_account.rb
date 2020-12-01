@@ -17,7 +17,7 @@ class BankAccount
 
   def make_withdrawal(amount)
     new_withdrawal = Withdrawal.new(amount * -1)
-    new_withdrawal.account_balance -= balance()
+    new_withdrawal.account_balance += balance()
     @transactions.push(new_withdrawal)
   end
 
@@ -28,8 +28,11 @@ class BankAccount
   end
 
   def print_statement
-    "date || credit || debit || balance" + "\n" +
-    transactions.map { |transaction| transaction.string_coverter }.join("\n")
+    "date || credit || debit || balance\n" + transactions.reverse_each.map { |transaction| transaction.string_coverter }.join("\n")
+  end
+
+  def statement
+    puts print_statement()
   end
 
 end
