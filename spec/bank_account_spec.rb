@@ -23,13 +23,25 @@ describe BankAccount do
 
   describe '#add_deposit' do
     it 'adds funds to account balance' do
+      expect(Deposit).to receive(:new).and_return(deposit)
+      expect(deposit).to receive(:amount).and_return(100)
 
       expect { @my_new_account.add_deposit(100) }.to change { @my_new_account.balance() }.by(100)
     end
 
     it 'adds deposit transaction to the transactions array' do
 
+      expect(Deposit).to receive(:new).and_return(deposit)
+
       expect { @my_new_account.add_deposit(100) }.to change { @my_new_account.transactions.length }.by(1)
+    end
+    it 'adds deposit transaction to the transactions array' do
+
+      expect(Deposit).to receive(:new).and_return(deposit)
+
+      @my_new_account.add_deposit(100)
+
+      expect(@my_new_account.transactions.include?(deposit)).to eq true
     end
   end
 end
