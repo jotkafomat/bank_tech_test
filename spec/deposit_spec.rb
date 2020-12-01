@@ -21,7 +21,7 @@ describe Deposit do
   describe '#string_coverter' do
     it 'converts Deposit to string' do
 
-      expect(@new_deposit.string_coverter).to eq "#{@new_deposit.date.strftime("%d/%m/%Y")} || || 100.00 || 100.00"
+      expect(@new_deposit.string_coverter).to eq "#{@new_deposit.date.strftime("%d/%m/%Y")} || 100.00 || || 100.00"
     end
   end
 

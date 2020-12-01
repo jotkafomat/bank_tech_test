@@ -10,6 +10,6 @@ class Deposit
   end
 
   def string_coverter
-    "#{date.strftime("%d/%m/%Y")} || || #{'%.2f' % amount} || #{'%.2f' % amount}"
+    "#{date.strftime("%d/%m/%Y")} || #{'%.2f' % amount} || || #{'%.2f' % amount}"
   end
 end
