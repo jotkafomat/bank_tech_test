@@ -34,3 +34,12 @@ I would like to see date and type of transaction on the statement
 As a Bank Customer
 to see a history of my transaction
 I would like to see them in chronological order on the statement
+
+I followed user stories followed by feature tests in the playground_aka_feature_test then TDD.
+
+How to use app:
+1. open bank_account.rb in rb
+2. create new account - new_account = BankAccount.new
+3. to add deposit to the account - new_account.add_deposit(100)
+4. to withdraw money from account - new_account.make_withdrawal(30)
+5. to see statement - new_account.statement
