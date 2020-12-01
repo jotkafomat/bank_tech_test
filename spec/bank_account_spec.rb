@@ -60,7 +60,7 @@ describe BankAccount do
     it 'prints head of the statement and one deposit transaction' do
       @my_new_account.make_withdrawal(50)
       date = @my_new_account.transactions[0].date.strftime("%d/%m/%Y")
-      amount = '%.2f' % @my_new_account.transactions[0].amount
+      amount = '%.2f' % (@my_new_account.transactions[0].amount * -1)
       balance = '%.2f' % @my_new_account.transactions[0].account_balance
 
       expect(@my_new_account.print_statement()).to eq "date || credit || debit || balance\n#{date} || || #{amount} || #{balance}"
