@@ -45,27 +45,4 @@ describe BankAccount do
       expect { @my_new_account.make_withdrawal(50) }.to change { @my_new_account.balance() }.by(-50)
     end
   end
-
-  describe '#print_statement_body' do
-
-    it 'prints head of the statement and one deposit transaction' do
-      @my_new_account.add_deposit(100)
-      date = @my_new_account.transactions[0].date.strftime("%d/%m/%Y")
-      amount = '%.2f' % @my_new_account.transactions[0].amount
-      balance = '%.2f' % @my_new_account.transactions[0].account_balance
-
-      expect(@my_new_account.print_statement_body()).to eq "#{date} || #{amount} || || #{balance}"
-    end
-
-    it 'prints head of the statement and one deposit transaction' do
-      @my_new_account.make_withdrawal(50)
-      date = @my_new_account.transactions[0].date.strftime("%d/%m/%Y")
-      amount = '%.2f' % (@my_new_account.transactions[0].amount * -1)
-      balance = '%.2f' % @my_new_account.transactions[0].account_balance
-
-      expect(@my_new_account.print_statement_body()).to eq "#{date} || || #{amount} || #{balance}"
-    end
-
-  end
-
 end

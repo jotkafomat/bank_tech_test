@@ -27,17 +27,8 @@ class BankAccount
       .sum
   end
 
-  def print_statement_body
-    transactions.reverse_each.map { |transaction| transaction.string_coverter }.join("\n")
+  def print_statement
+    new_statement = Statement.new
+    puts new_statement.show_statement(self)
   end
-
-  def print_statement_header
-    "date || credit || debit || balance\n"
-  end
-
-  def statement
-    puts print_statement_header()
-    puts print_statement_body()
-  end
-
 end

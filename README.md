@@ -43,3 +43,6 @@ How to use app:
 3. to add deposit to the account - new_account.add_deposit(100)
 4. to withdraw money from account - new_account.make_withdrawal(30)
 5. to see statement - new_account.statement
+
+Code structure:
+![code structure](class_diagram.png)

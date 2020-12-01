@@ -8,7 +8,8 @@ class Withdrawal
     @date = Time.now
     @account_balance = amount
   end
-  def string_coverter
+
+  def string_converter
     "#{date.strftime("%d/%m/%Y")} || || #{('%.2f' % -amount)} || #{'%.2f' % account_balance}"
   end
 end
