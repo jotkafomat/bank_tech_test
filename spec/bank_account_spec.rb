@@ -26,7 +26,7 @@ describe BankAccount do
       expect { @my_new_account.add_deposit(100) }.to change { @my_new_account.balance() }.by(100)
     end
 
-    it 'adds deposit amount to the account balance' do
+    it 'adds deposit transaction to the transactions array' do
 
       expect { @my_new_account.add_deposit(100) }.to change { @my_new_account.transactions.length }.by(1)
     end
@@ -49,6 +49,20 @@ describe BankAccount do
 
       expect { @my_new_account.make_withdrawal(50) }.to change { @my_new_account.balance() }.by(-50)
     end
+
+    it 'adds withdrawal transaction to the transactions array' do
+
+      expect { @my_new_account.make_withdrawal(50) }.to change { @my_new_account.transactions.length }.by(1)
+    end
+
+    it 'adds deposit transaction to the transactions array' do
+
+      @my_new_account.make_withdrawal(50)
+
+      expect(@my_new_account.transactions[0]).to be_instance_of(Withdrawal)
+    end
+
+
     it 'raises an error when input is not a digit' do
 
       expect { @my_new_account.make_withdrawal("asdfg") }.to raise_error("Input is not a digit")
