@@ -1,7 +1,7 @@
 class Statement
 
   def show_statement(account)
-      head_statement + body_statement(account)
+    head_statement + body_statement(account)
   end
 
   def head_statement
