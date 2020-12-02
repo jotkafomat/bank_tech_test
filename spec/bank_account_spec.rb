@@ -45,6 +45,7 @@ describe BankAccount do
   end
 
   describe '#make_withdrawal' do
+
     it 'withdraws money from acount' do
 
       expect { @my_new_account.make_withdrawal(50) }.to change { @my_new_account.balance() }.by(-50)

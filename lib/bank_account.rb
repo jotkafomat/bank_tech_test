@@ -1,5 +1,6 @@
 require_relative './withdrawal.rb'
 require_relative './deposit.rb'
+require_relative './statement.rb'
 
 class BankAccount
 
@@ -11,6 +12,7 @@ class BankAccount
 
   def add_deposit(amount)
     raise "Input is not a digit" unless amount.is_a? Numeric
+
     new_deposit = Deposit.new(amount)
     new_deposit.account_balance += balance()
     @transactions.push(new_deposit)
@@ -18,6 +20,7 @@ class BankAccount
 
   def make_withdrawal(amount)
     raise "Input is not a digit" unless amount.is_a? Numeric
+
     new_withdrawal = Withdrawal.new(amount * -1)
     new_withdrawal.account_balance += balance()
     @transactions.push(new_withdrawal)
@@ -31,6 +34,6 @@ class BankAccount
 
   def print_statement
     new_statement = Statement.new
-    puts new_statement.show_statement(self)
+    puts new_statement.show_statement(@transactions)
   end
 end
