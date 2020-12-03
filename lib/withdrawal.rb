@@ -10,6 +10,10 @@ class Withdrawal
   end
 
   def string_converter
-    "#{date.strftime("%d/%m/%Y")} || || #{('%.2f' % -amount)} || #{'%.2f' % account_balance}"
+    date = @date.strftime("%d/%m/%Y")
+    withdrawal_amount = '%.2f' % -@amount
+    account_balance = '%.2f' % @account_balance
+
+    "#{date} || || #{withdrawal_amount} || #{account_balance}"
   end
 end

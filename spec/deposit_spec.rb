@@ -24,7 +24,11 @@ describe Deposit do
 
     it 'converts class instance to a string' do
 
-      expect(@new_deposit.string_converter()).to eq "#{@new_deposit.date.strftime("%d/%m/%Y")} || #{'%.2f' % @new_deposit.amount} || || #{'%.2f' % @new_deposit.account_balance}"
+      date = @new_deposit.date.strftime("%d/%m/%Y")
+      deposit_amount = '%.2f' % @new_deposit.amount
+      account_balance = '%.2f' % @new_deposit.account_balance
+
+      expect(@new_deposit.string_converter()).to eq "#{date} || #{deposit_amount} || || #{account_balance}"
     end
   end
 end

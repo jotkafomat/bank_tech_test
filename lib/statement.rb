@@ -10,6 +10,9 @@ class Statement
   end
 
   def body_statement(transactions)
-    transactions.reverse_each.map { |transaction| transaction.string_converter }.join("\n")
+    transactions
+      .reverse_each
+      .map { |transaction| transaction.string_converter }
+      .join("\n")
   end
 end
