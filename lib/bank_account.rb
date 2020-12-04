@@ -15,16 +15,14 @@ class BankAccount
     raise "Input is not a digit" unless amount.is_a? Numeric
 
     new_deposit = Deposit.new(amount)
-    new_deposit.account_balance += balance()
-    @transactions.push(new_deposit)
+    @transactions.unshift(new_deposit)
   end
 
   def make_withdrawal(amount)
     raise "Input is not a digit" unless amount.is_a? Numeric
 
     new_withdrawal = Withdrawal.new(amount * -1)
-    new_withdrawal.account_balance += balance()
-    @transactions.push(new_withdrawal)
+    @transactions.unshift(new_withdrawal)
   end
 
   def balance

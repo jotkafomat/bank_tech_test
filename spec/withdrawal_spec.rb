@@ -34,9 +34,8 @@ describe Withdrawal do
 
       date = @new_withdrawal.date.strftime("%d/%m/%Y")
       withdrawal_amount = '%.2f' % -@new_withdrawal.amount
-      account_balance = '%.2f' % @new_withdrawal.account_balance
 
-      expect(@new_withdrawal.string_converter()).to eq "#{date} || || #{withdrawal_amount} || #{account_balance}"
+      expect(@new_withdrawal.string_converter()).to eq "#{date} || || #{withdrawal_amount} || "
     end
   end
 end
