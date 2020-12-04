@@ -7,6 +7,14 @@ describe Withdrawal do
     @new_withdrawal = Withdrawal.new(50)
   end
 
+  before do
+    Timecop.freeze(Time.now)
+  end
+
+  after do
+   Timecop.return
+  end
+
   describe '#initialize' do
 
     it 'creates new instance of withdrawal with given amount' do

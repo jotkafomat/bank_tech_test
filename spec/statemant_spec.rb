@@ -1,12 +1,22 @@
 require 'statement'
+require 'timecop'
 
 describe Statement do
 
+  before do
+    Timecop.freeze(Time.now)
+  end
+
+  after do
+   Timecop.return
+  end
+
   it 'shows all transactions on bank account' do
+
+
     new_withdrawal = double :withdrawal
     new_deposit = double :deposit
     date = Time.now.strftime("%d/%m/%Y")
-
     allow(new_deposit)
       .to receive(:string_converter)
       .and_return("#{date} || 50.00 || || 50.00")

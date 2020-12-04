@@ -8,6 +8,14 @@ describe Deposit do
     @new_deposit = Deposit.new(100)
   end
 
+  before do
+    Timecop.freeze(Time.now)
+  end
+
+  after do
+   Timecop.return
+  end
+
   describe '#initialize' do
 
     it 'creates new instance of deposit with given amount' do
