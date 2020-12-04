@@ -1,5 +1,6 @@
 require 'deposit'
 require 'date'
+require 'transaction'
 
 describe Deposit do
 

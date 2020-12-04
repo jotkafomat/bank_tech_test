@@ -1,4 +1,5 @@
 require 'date'
+require_relative './lib/transaction.rb'
 require_relative './lib/bank_account.rb'
 require_relative './lib/deposit.rb'
 require_relative './lib/withdrawal.rb'

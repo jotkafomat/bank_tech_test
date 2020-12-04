@@ -1,3 +1,4 @@
+require_relative './transaction.rb'
 require_relative './withdrawal.rb'
 require_relative './deposit.rb'
 require_relative './statement.rb'
