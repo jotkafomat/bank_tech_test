@@ -5,38 +5,20 @@ require 'transaction'
 describe Deposit do
 
   before(:each) do
-    @new_deposit = Deposit.new(100)
-  end
-
-  before do
     Timecop.freeze(Time.now)
+    @new_deposit = Deposit.new(100)
   end
 
   after do
    Timecop.return
   end
 
-  describe '#initialize' do
-
-    it 'creates new instance of deposit with given amount' do
-
-      expect(@new_deposit.amount).to eq 100
-    end
-
-    it 'creates new instance of deposit with current date' do
-
-      expect(@new_deposit.date).to be_a(Time)
-    end
-  end
-
   describe '#string_converter' do
 
     it 'converts class instance to a string' do
+      date = Time.now.strftime("%d/%m/%Y")
 
-      date = @new_deposit.date.strftime("%d/%m/%Y")
-      deposit_amount = '%.2f' % @new_deposit.amount
-
-      expect(@new_deposit.string_converter()).to eq "#{date} || #{deposit_amount} || || "
+      expect(@new_deposit.string_converter()).to eq "#{date} || 100.00 || || "
     end
   end
 end
