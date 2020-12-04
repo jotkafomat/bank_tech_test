@@ -7,36 +7,27 @@ describe BankAccount do
     @my_new_account = BankAccount.new
   end
 
-  describe '#initialize' do
-
-    it 'initializes with balance equal 0' do
-
-      expect(@my_new_account.balance()).to eq 0
-    end
-
-    it 'initializes with no transactions on account' do
-
-      expect(@my_new_account.transactions).to eq []
-    end
-  end
-
   describe '#add_deposit' do
 
     it 'adds funds to account balance' do
 
-      expect { @my_new_account.add_deposit(100) }.to change { @my_new_account.balance() }.by(100)
+      deposit_class_double = double :deposit_class_double
+      account = BankAccount.new(deposit_class_double)
+
+      expect(deposit_class_double).to receive(:new).with(100)
+
+      account.add_deposit(100)
     end
 
     it 'adds deposit transaction to the transactions array' do
 
-      expect { @my_new_account.add_deposit(100) }.to change { @my_new_account.transactions.length }.by(1)
-    end
+      deposit_double = double :deposit, amount: 100
+      deposit_class_double = double :deposit_class_double, new: deposit_double
+      account = BankAccount.new(deposit_class_double)
 
-    it 'adds deposit transaction to the transactions array' do
+      account.add_deposit(100)
 
-      @my_new_account.add_deposit(100)
-
-      expect(@my_new_account.transactions[0]).to be_instance_of(Deposit)
+      expect(account.balance()).to eq(100)
     end
 
     it 'raises an error when input is not a digit' do
@@ -49,19 +40,25 @@ describe BankAccount do
 
     it 'withdraws money from acount' do
 
-      expect { @my_new_account.make_withdrawal(50) }.to change { @my_new_account.balance() }.by(-50)
+      withdrawal_class_double = double :withdrawal_class_double
+      deposit_class_double = double :deposit_class_double
+      account = BankAccount.new(deposit_class_double, withdrawal_class_double)
+
+      expect(withdrawal_class_double).to receive(:new).with(-100)
+
+      account.make_withdrawal(100)
     end
 
     it 'adds withdrawal transaction to the transactions array' do
 
-      expect { @my_new_account.make_withdrawal(50) }.to change { @my_new_account.transactions.length }.by(1)
-    end
+      withdrawal_double = double :withdrawal, amount: -100
+      withdrawal_class_double = double :withdrawal_class_double, new: withdrawal_double
+      deposit_class_double = double :deposit_class_double
+      account = BankAccount.new(deposit_class_double, withdrawal_class_double)
 
-    it 'adds withdrawal transaction to the transactions array' do
+      account.make_withdrawal(100)
 
-      @my_new_account.make_withdrawal(50)
-
-      expect(@my_new_account.transactions[0]).to be_instance_of(Withdrawal)
+      expect(account.balance).to eq(-100)
     end
 
     it 'raises an error when input is not a digit' do

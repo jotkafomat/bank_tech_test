@@ -5,28 +5,28 @@ require_relative './statement.rb'
 
 class BankAccount
 
-  attr_reader :transactions, :initial_balance
-
-  def initialize
+  def initialize(deposit = Deposit, withdrawal = Withdrawal)
     @transactions = []
+    @deposit = deposit
+    @withdrawal = withdrawal
   end
 
   def add_deposit(amount)
     raise "Input is not a digit" unless amount.is_a? Numeric
 
-    new_deposit = Deposit.new(amount)
+    new_deposit = @deposit.new(amount)
     @transactions.unshift(new_deposit)
   end
 
   def make_withdrawal(amount)
     raise "Input is not a digit" unless amount.is_a? Numeric
 
-    new_withdrawal = Withdrawal.new(amount * -1)
+    new_withdrawal = @withdrawal.new(amount * -1)
     @transactions.unshift(new_withdrawal)
   end
 
   def balance
-    transactions
+    @transactions
       .map { |transaction| transaction.amount }
       .sum
   end
