@@ -32,7 +32,7 @@ class BankAccount
   end
 
   def print_statement
-    new_statement = Statement.new
-    puts new_statement.show_statement(@transactions)
+    new_statement = Statement.new(@transactions)
+    puts new_statement.show_statement
   end
 end

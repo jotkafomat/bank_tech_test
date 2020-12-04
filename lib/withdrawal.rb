@@ -1,7 +1,7 @@
 class Withdrawal < Transaction
 
 
-  def string_converter
+  def to_s
     date = @date.strftime("%d/%m/%Y")
     withdrawal_amount = '%.2f' % -@amount
 

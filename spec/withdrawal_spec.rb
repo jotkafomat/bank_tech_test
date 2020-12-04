@@ -12,12 +12,12 @@ describe Withdrawal do
    Timecop.return
   end
 
-  describe '#string_converter' do
+  describe '#to_s' do
 
     it 'converts class instance to a string' do
       date = Time.now.strftime("%d/%m/%Y")
 
-      expect(@new_withdrawal.string_converter()).to eq "#{date} || || 50.00 || "
+      expect(@new_withdrawal.to_s()).to eq "#{date} || || 50.00 || "
     end
   end
 end

@@ -18,17 +18,18 @@ describe Statement do
     new_deposit = double :deposit
     date = Time.now.strftime("%d/%m/%Y")
     allow(new_deposit)
-      .to receive(:string_converter)
+      .to receive(:to_s)
       .and_return("#{date} || 50.00 || || ")
       allow(new_deposit).to receive(:amount).and_return(50.00)
     allow(new_withdrawal)
-      .to receive(:string_converter)
+      .to receive(:to_s)
       .and_return("#{date} || || 20.00 || ")
       allow(new_withdrawal).to receive(:amount).and_return(-20.00)
 
     transactions = [new_withdrawal, new_deposit]
+    new_statement = Statement.new(transactions)
 
-    expect(subject.show_statement(transactions))
+    expect(new_statement.show_statement)
       .to eq "date || credit || debit || balance\n#{date} || || 20.00 || 30.00\n#{date} || 50.00 || || 50.00"
   end
 end

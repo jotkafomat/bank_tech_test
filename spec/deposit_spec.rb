@@ -13,12 +13,12 @@ describe Deposit do
    Timecop.return
   end
 
-  describe '#string_converter' do
+  describe '#to_s' do
 
     it 'converts class instance to a string' do
       date = Time.now.strftime("%d/%m/%Y")
 
-      expect(@new_deposit.string_converter()).to eq "#{date} || 100.00 || || "
+      expect(@new_deposit.to_s()).to eq "#{date} || 100.00 || || "
     end
   end
 end

@@ -1,6 +1,6 @@
 class Deposit < Transaction
 
-  def string_converter
+  def to_s
     date = @date.strftime("%d/%m/%Y")
     deposit_amount = '%.2f' % @amount
 
