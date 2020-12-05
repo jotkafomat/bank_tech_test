@@ -9,7 +9,7 @@ describe BankAccount do
 
   describe '#add_deposit' do
 
-    it 'adds funds to account balance' do
+    it 'creates deposit' do
 
       deposit_class_double = double :deposit_class_double
       account = BankAccount.new(deposit_class_double)
@@ -19,7 +19,7 @@ describe BankAccount do
       account.add_deposit(100)
     end
 
-    it 'adds deposit transaction to the transactions array' do
+    it 'adds funds to account balance' do
 
       deposit_double = double :deposit, amount: 100
       deposit_class_double = double :deposit_class_double, new: deposit_double
@@ -38,7 +38,7 @@ describe BankAccount do
 
   describe '#make_withdrawal' do
 
-    it 'withdraws money from acount' do
+    it 'creates whitdrawal' do
 
       withdrawal_class_double = double :withdrawal_class_double
       deposit_class_double = double :deposit_class_double
@@ -49,7 +49,7 @@ describe BankAccount do
       account.make_withdrawal(100)
     end
 
-    it 'adds withdrawal transaction to the transactions array' do
+    it 'withdraws money from acount' do
 
       withdrawal_double = double :withdrawal, amount: -100
       withdrawal_class_double = double :withdrawal_class_double, new: withdrawal_double
